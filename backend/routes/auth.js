@@ -4,14 +4,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Admin = require("../models/admin");
 
-const JWT_SECRET = "secret123";  // ⚠️ Use env var in real apps
-
+const JWT_SECRET = "secret123"; // ⚠️ Move to .env in real apps
 
 // 🔐 Admin Signup
 router.post("/signup", async (req, res) => {
   const { name, username, password } = req.body;
 
-  console.log("📩 Signup received:", req.body);
+  console.log("📩 Signup received:", req.body); // ✅ Log incoming data
 
   try {
     const existingUser = await Admin.findOne({ username });
@@ -31,6 +30,7 @@ router.post("/signup", async (req, res) => {
 
     res.status(201).json({ message: "Signup successful" });
   } catch (err) {
+    console.error("❌ Signup Error:", err); // ✅ Log error clearly
     res.status(500).json({ message: "Signup failed", error: err.message });
   }
 });
@@ -52,6 +52,7 @@ router.post("/login", async (req, res) => {
 
     res.status(200).json({ token, userId: user._id, name: user.name });
   } catch (err) {
+    console.error("❌ Login Error:", err); // ✅ Log login errors too
     res.status(500).json({ message: "Login failed", error: err.message });
   }
 });
