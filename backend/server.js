@@ -22,5 +22,5 @@ app.use("/api/students", require("./routes/students"));
 
 // Start the server
 app.listen(5000, () => {
-  console.log("🚀 Server is running on http://localhost:5000");
+  console.log("🚀https://feetrackr-backend.onrender.com");
 });

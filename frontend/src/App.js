@@ -70,7 +70,7 @@ function App() {
 
     if (token && currentUser?.role === "admin") {
       axios
-        .get("http://localhost:5000/api/students", {
+        .get("https://feetrackr-backend.onrender.com", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -93,7 +93,7 @@ function App() {
   const handleLogin = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post("http://localhost:5000/api/auth/login", {
+    const res = await axios.post("https://feetrackr-backend.onrender.com", {
       username: loginData.username,
       password: loginData.password,
     });
@@ -123,7 +123,7 @@ function App() {
 
   axios
     .post(
-      "http://localhost:5000/api/students",
+      "https://feetrackr-backend.onrender.com",
       { ...student, adminId: currentUser?.id },
       { headers: { Authorization: `Bearer ${token}` } }
     )
@@ -149,7 +149,7 @@ function App() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.delete(`http://localhost:5000/api/students/${student._id}`, {
+      const res = await axios.delete(`https://feetrackr-backend.onrender.com${student._id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -179,7 +179,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        `http://localhost:5000/api/students/${student._id}/fees`,
+        `https://feetrackr-backend.onrender.com/${student._id}/fees`,
         {
           month,
           amount,
