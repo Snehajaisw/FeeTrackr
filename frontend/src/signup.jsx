@@ -14,7 +14,7 @@ function Signup({ onBackToLogin }) {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://feetrackr-backend.onrender.com", formData);
+      const res = await axios.post("https://feetrackr-backend.onrender.com/api/auth/signup", formData);
       setMessage("✅ Registered successfully! Now login.");
     } catch (err) {
       setMessage("❌ " + (err.response?.data?.message || "Signup failed"));

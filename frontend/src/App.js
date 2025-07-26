@@ -93,7 +93,7 @@ function App() {
   const handleLogin = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post("https://feetrackr-backend.onrender.com", {
+    axios.post("https://feetrackr-backend.onrender.com/api/auth/login", {
       username: loginData.username,
       password: loginData.password,
     });
