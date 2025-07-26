@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-function StudentList({ students, setSelectedStudent, deleteStudent }) {
+function StudentList({ students, setSelectedStudent, deleteStudent, onViewDetails }) {
   return (
     <TableContainer component={Paper} sx={{ mb: 2 }}>
       <Table>
@@ -22,6 +22,7 @@ function StudentList({ students, setSelectedStudent, deleteStudent }) {
             <TableCell>Class</TableCell>
             <TableCell>Monthly Fee</TableCell>
             <TableCell>Fees</TableCell>
+            <TableCell>View</TableCell> {/* ✅ New Column */}
             <TableCell>Delete</TableCell>
           </TableRow>
         </TableHead>
@@ -41,6 +42,15 @@ function StudentList({ students, setSelectedStudent, deleteStudent }) {
                       onClick={() => setSelectedStudent(idx)}
                     >
                       Manage Fees
+                    </Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      variant="outlined"
+                      size="small"
+                      onClick={() => onViewDetails(student)}
+                    >
+                      View
                     </Button>
                   </TableCell>
                   <TableCell>
