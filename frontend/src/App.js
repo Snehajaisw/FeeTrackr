@@ -93,11 +93,12 @@ function App() {
   const handleLogin = async (e) => {
   e.preventDefault();
   try {
-    axios.post("https://feetrackr-backend.onrender.com/api/auth/login", {
-      username: loginData.username,
-      password: loginData.password,
-    });
-    const data = res.data;
+    const res = await axios.post("https://feetrackr-backend.onrender.com/api/auth/login", {
+  username: loginData.username,
+  password: loginData.password,
+});
+const data = res.data;
+
     localStorage.setItem("token", data.token);
 
     // 🟢 SAVE ADMIN NAME HERE
