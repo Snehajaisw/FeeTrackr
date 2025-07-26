@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -10,7 +11,7 @@ app.use(express.json()); // Body parser to read JSON from frontend
 app.use("/api/auth", require("./routes/auth"));
 
 // Connect MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/tuitionsDB", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
